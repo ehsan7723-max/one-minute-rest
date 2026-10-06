@@ -6,9 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#5b9478">
 
-<!-- Bale Mini App -->
-<script src="https://tapi.bale.ai/miniapp.js?3"></script>
-
 <title>استراحت یک دقیقه‌ای</title>
 
 <style>
@@ -144,6 +141,7 @@ line-height:1.9
 }
 
 /* دکمه پایان */
+
 .end-button{
 border:none;
 border-radius:16px;
@@ -317,7 +315,7 @@ margin-top:16px
 این استراحت کوتاه فقط برای ساختن یک حس خوب در روز کاری است. 🌿
 </p>
 
-<button class="end-button" id="endButton">
+<button type="button" class="end-button" id="endButton">
 پایان
 </button>
 
@@ -572,23 +570,11 @@ behavior:"smooth"
 });
 
 
-/* دکمه پایان */
+/* دکمه پایان برای وب */
 
 document.getElementById("endButton").addEventListener("click", () => {
 
-if (
-window.Bale &&
-window.Bale.WebApp &&
-typeof window.Bale.WebApp.close === "function"
-) {
-
-window.Bale.WebApp.close();
-
-} else {
-
-window.close();
-
-}
+window.location.replace("about:blank");
 
 });
 
@@ -596,5 +582,6 @@ window.close();
 
 </body>
 </html>
+
 
 
