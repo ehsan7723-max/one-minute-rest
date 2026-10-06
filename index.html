@@ -1,550 +1,1439 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#5b9478">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>استراحت یک دقیقه‌ای</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
+
 margin:0;
-font-family:Tahoma,Arial,sans-serif;
-background:linear-gradient(145deg,#f5fbf7,#e8f4ed);
-color:#294238;
-min-height:100vh
+
+font-family:
+Tahoma,
+Arial,
+sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#dff4e8,
+#edf8f1
+);
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+color:#315443;
+
 }
 
 .container{
-max-width:540px;
-margin:auto;
-padding:20px 14px 35px
-}
 
-.box{
-background:rgba(255,255,255,.96);
-border-radius:30px;
-padding:25px 18px;
-box-shadow:0 14px 40px rgba(38,76,59,.13)
-}
+width:100%;
 
-.header{
-text-align:center
-}
+max-width:480px;
 
-.logo{
-font-size:52px
-}
+background:white;
 
-h1{
-font-size:27px;
-margin:8px 0
-}
+border-radius:28px;
 
-.intro{
-font-size:14px;
-line-height:2;
-color:#687871;
-margin:0
-}
+padding:25px;
 
-.question{
-font-size:18px;
-font-weight:bold;
-text-align:center;
-margin:27px 0 16px
-}
+box-shadow:
+0 15px 45px
+rgba(43,85,62,.15);
 
-.options{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.option{
-border:none;
-border-radius:20px;
-min-height:82px;
-background:linear-gradient(145deg,#fff,#edf7f1);
-box-shadow:0 7px 20px rgba(38,76,59,.10);
-cursor:pointer;
-color:#294238;
-font-family:inherit;
-font-size:15px;
-transition:.2s
-}
-
-.option:hover{
-transform:translateY(-3px)
-}
-
-.option:active{
-transform:scale(.97)
-}
-
-.emoji{
-font-size:31px;
-display:block;
-margin-bottom:6px
 }
 
 .step{
-display:none
+
+display:none;
+
 }
 
 .step.active{
-display:block
+
+display:block;
+
 }
 
-.progress{
+.logo{
+
+font-size:46px;
+
 text-align:center;
-color:#84918b;
-font-size:11px;
-margin-top:18px
+
+margin-bottom:8px;
+
 }
 
-.result{
-display:none;
-text-align:center
+h1{
+
+text-align:center;
+
+font-size:25px;
+
+margin:5px 0 12px;
+
+color:#315c46;
+
 }
 
-.result.active{
-display:block
-}
+h2{
 
-.result-icon{
-font-size:65px
-}
+text-align:center;
 
-.result h2{
 font-size:22px;
-margin:10px 0 16px
+
+color:#315c46;
+
 }
 
-.message{
-font-size:18px;
-line-height:2.3;
-color:#3c5047;
-margin:0
-}
+.intro{
 
-.divider{
-height:1px;
-background:#e7eee9;
-margin:22px 0
-}
-
-.note{
-font-size:11px;
-color:#7d8984;
-line-height:1.9
-}
-
-.footer{
 text-align:center;
-color:#87948e;
-font-size:11px;
-line-height:1.9;
-margin-top:16px
+
+line-height:2;
+
+font-size:15px;
+
+color:#62766a;
+
+margin-bottom:22px;
+
 }
 
-@media(max-width:360px){
+.progress-box{
+
+background:#f1f8f3;
+
+border-radius:18px;
+
+padding:14px;
+
+margin-bottom:20px;
+
+}
+
+.progress-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:13px;
+
+margin-bottom:9px;
+
+color:#527061;
+
+}
+
+.progress-bar{
+
+width:100%;
+
+height:9px;
+
+background:#dcebe1;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+
+width:0%;
+
+background:#70a889;
+
+border-radius:20px;
+
+transition:.5s;
+
+}
+
+.special-day{
+
+display:none;
+
+background:#fff8df;
+
+border:1px solid #f0df9e;
+
+border-radius:18px;
+
+padding:13px;
+
+line-height:1.9;
+
+text-align:center;
+
+font-size:14px;
+
+margin-bottom:18px;
+
+color:#79652d;
+
+}
+
+.question{
+
+text-align:center;
+
+font-size:18px;
+
+font-weight:bold;
+
+margin-bottom:15px;
+
+}
 
 .options{
-gap:8px
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
 }
 
 .option{
-min-height:75px
+
+border:none;
+
+background:#f4f8f5;
+
+border-radius:18px;
+
+padding:16px 10px;
+
+font-family:inherit;
+
+font-size:15px;
+
+color:#355b46;
+
+cursor:pointer;
+
+transition:.2s;
+
+min-height:58px;
+
 }
 
-.emoji{
-font-size:27px
-}
+.option:hover{
+
+background:#e5f2e9;
+
+transform:translateY(-2px);
 
 }
+
+.option:active{
+
+transform:scale(.97);
+
+}
+
+.card{
+
+font-size:17px;
+
+min-height:100px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+gap:7px;
+
+}
+
+.card-icon{
+
+font-size:31px;
+
+}
+
+.result{
+
+display:none;
+
+text-align:center;
+
+}
+
+.result.active{
+
+display:block;
+
+}
+
+.result-icon{
+
+font-size:60px;
+
+margin-bottom:10px;
+
+}
+
+.message{
+
+font-size:17px;
+
+line-height:2.2;
+
+color:#496355;
+
+background:#f4f9f5;
+
+padding:20px;
+
+border-radius:22px;
+
+margin:20px 0;
+
+}
+
+.result-day{
+
+font-size:13px;
+
+color:#779083;
+
+margin-bottom:18px;
+
+}
+
+.note{
+
+font-size:13px;
+
+color:#87978e;
+
+line-height:1.8;
+
+}
+
+.divider{
+
+height:1px;
+
+background:#e4eee7;
+
+margin:22px 0;
+
+}
+
+.new-cycle-button{
+
+border:none;
+
+width:100%;
+
+min-height:58px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+145deg,
+#5b9478,
+#78b095
+);
+
+color:white;
+
+font-family:inherit;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:
+0 8px 20px
+rgba(38,76,59,.18);
+
+transition:.2s;
+
+}
+
+.new-cycle-button:hover{
+
+transform:translateY(-2px);
+
+}
+
+.new-cycle-button:active{
+
+transform:scale(.97);
+
+}
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-<div class="box">
 
-<!-- مرحله اول -->
+<!-- =================================================
+     مرحله اول
+================================================= -->
 
-<section id="step1" class="step active">
+<section
+id="step1"
+class="step active">
 
-<div class="header">
 
-<div class="logo">🌱</div>
+<div class="logo">
+🌱
+</div>
 
-<h1>استراحت یک دقیقه‌ای</h1>
+
+<h1>
+استراحت یک دقیقه‌ای
+</h1>
+
 
 <p class="intro">
-قبل از اینکه کارت را ادامه بدهی، فقط یک دقیقه برای خودت وقت بگذار.
+
+گاهی فقط یک دقیقه مکث،
+می‌تواند حال ادامه‌ی روز را بهتر کند. 💚
+
+<br>
+
+حال امروزت را انتخاب کن
+و بعد یک کارت بردار.
+
 </p>
+
+
+<!-- پیشرفت -->
+
+<div class="progress-box">
+
+<div class="progress-top">
+
+<span id="dayText">
+روز ۱ از ۳۰
+</span>
+
+<span id="progressPercent">
+۳٪
+</span>
 
 </div>
 
-<div class="question">
+
+<div class="progress-bar">
+
+<div
+id="progressFill"
+class="progress-fill">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- پیام ویژه -->
+
+<div
+id="specialDay"
+class="special-day">
+</div>
+
+
+<p class="question">
+
 حال امروزت چطوره؟
-</div>
 
-<div class="options">
-
-<button class="option" data-mood="happy">
-<span class="emoji">😄</span>
-عالی
-</button>
-
-<button class="option" data-mood="good">
-<span class="emoji">🙂</span>
-خوب
-</button>
-
-<button class="option" data-mood="normal">
-<span class="emoji">😐</span>
-معمولی
-</button>
-
-<button class="option" data-mood="tired">
-<span class="emoji">😔</span>
-خسته
-</button>
-
-<button class="option" data-mood="stressed">
-<span class="emoji">😣</span>
-تحت فشار
-</button>
-
-</div>
-
-<div class="progress">
-مرحله ۱ از ۲
-</div>
-
-</section>
-
-
-<!-- مرحله دوم -->
-
-<section id="step2" class="step">
-
-<div class="header">
-
-<div class="logo">✨</div>
-
-<h1>حالا یک کارت انتخاب کن</h1>
-
-<p class="intro">
-زیاد فکر نکن... با اولین حسی که داری، یکی از کارت‌ها را انتخاب کن 👇
 </p>
 
-</div>
 
 <div class="options">
 
-<button class="option" data-card="sun">
-<span class="emoji">☀️</span>
-خورشید
+
+<button
+class="option mood"
+data-mood="happy">
+
+😊 عالی
+
 </button>
 
-<button class="option" data-card="sprout">
-<span class="emoji">🌱</span>
-جوانه
+
+<button
+class="option mood"
+data-mood="good">
+
+🙂 خوب
+
 </button>
 
-<button class="option" data-card="cup">
-<span class="emoji">☕</span>
-فنجان
+
+<button
+class="option mood"
+data-mood="normal">
+
+😌 معمولی
+
 </button>
 
-<button class="option" data-card="butterfly">
-<span class="emoji">🦋</span>
-پروانه
+
+<button
+class="option mood"
+data-mood="tired">
+
+😴 خسته
+
 </button>
 
-<button class="option" data-card="star">
-<span class="emoji">⭐</span>
-ستاره
+
+<button
+class="option mood"
+data-mood="stressed">
+
+😣 تحت فشار
+
 </button>
 
-<button class="option" data-card="rainbow">
-<span class="emoji">🌈</span>
-رنگین‌کمان
-</button>
 
 </div>
 
-<div class="progress">
-مرحله ۲ از ۲
-</div>
 
 </section>
 
 
-<!-- نتیجه -->
 
-<section id="result" class="result">
+<!-- =================================================
+     مرحله دوم
+================================================= -->
 
-<div class="result-icon" id="resultIcon"></div>
+<section
+id="step2"
+class="step">
+
+
+<div class="logo">
+✨
+</div>
+
 
 <h2>
-پیام امروز برای تو 💚
+حالا یک کارت انتخاب کن
 </h2>
 
-<p class="message" id="message"></p>
 
-<div class="divider"></div>
+<p class="intro">
 
-<p class="note">
-این استراحت کوتاه فقط برای ساختن یک حس خوب در روز کاری است. 🌿
+زیاد فکر نکن؛
+اولین کارتی که حس خوبی بهت می‌دهد را انتخاب کن. 🌿
+
 </p>
+
+
+<div class="progress-box">
+
+<div class="progress-top">
+
+<span id="dayText2">
+روز ۱ از ۳۰
+</span>
+
+<span id="progressPercent2">
+۳٪
+</span>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div
+id="progressFill2"
+class="progress-fill">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="options">
+
+
+<button
+class="option card"
+data-card="sun">
+
+<span class="card-icon">☀️</span>
+
+<span>خورشید</span>
+
+</button>
+
+
+<button
+class="option card"
+data-card="sprout">
+
+<span class="card-icon">🌱</span>
+
+<span>جوانه</span>
+
+</button>
+
+
+<button
+class="option card"
+data-card="cup">
+
+<span class="card-icon">☕</span>
+
+<span>فنجان</span>
+
+</button>
+
+
+<button
+class="option card"
+data-card="butterfly">
+
+<span class="card-icon">🦋</span>
+
+<span>پروانه</span>
+
+</button>
+
+
+<button
+class="option card"
+data-card="star">
+
+<span class="card-icon">⭐</span>
+
+<span>ستاره</span>
+
+</button>
+
+
+<button
+class="option card"
+data-card="rainbow">
+
+<span class="card-icon">🌈</span>
+
+<span>رنگین‌کمان</span>
+
+</button>
+
+
+</div>
+
 
 </section>
 
+
+
+<!-- =================================================
+     نتیجه
+================================================= -->
+
+<section
+id="result"
+class="result">
+
+
+<div
+id="resultIcon"
+class="result-icon">
+
+🌱
+
 </div>
 
 
+<h2>
+پیام امروز تو
+</h2>
+
+
+<p
+id="message"
+class="message">
+</p>
+
+
+<div
+id="resultDay"
+class="result-day">
 </div>
+
+
+<p class="note">
+
+این یک دقیقه فقط برای توست.
+نفس بکش، مکث کن و بعد ادامه بده. 💚
+
+</p>
+
+
+</section>
+
+
+
+<!-- =================================================
+     پایان دوره
+================================================= -->
+
+<section
+id="finished"
+class="result">
+
+
+<div class="result-icon">
+🎉
+</div>
+
+
+<h2>
+تبریک! دوره ۳۰ روزه تمام شد 💚
+</h2>
+
+
+<p class="message">
+
+تو ۳۰ روز برای خودت وقت گذاشتی،
+مکث کردی و هر روز یک دقیقه
+به حال خودت توجه کردی.
+
+<br><br>
+
+همین ادامه دادن ارزشمنده.
+اگر دوست داری، می‌توانی
+یک دوره ۳۰ روزه‌ی دیگر را شروع کنی
+و این عادت خوب را ادامه بدهی. 🌱
+
+</p>
+
+
+<div class="divider">
+</div>
+
+
+<button
+id="startNewCycle"
+class="new-cycle-button">
+
+🌱 شروع دوره دوم
+
+</button>
+
+
+</section>
+
+
+</div>
+
 
 
 <script>
 
-const messages = {
 
-happy: {
+/* =====================================================
+   پیام‌های ۳۰ روز
+===================================================== */
 
-sun:[
-"☀️",
-"چه خوب که امروز انرژی خوبی داری. اجازه بده این انرژی به اطرافیانت هم برسد؛ حال خوب تو می‌تواند حال یک نفر دیگر را هم بهتر کند."
-],
+const dailyMessages = [
 
-sprout:[
-"🌱",
-"وقتی حال دلت خوب است، بهترین زمان برای شروع یک کار کوچک و دوست‌داشتنی است. لازم نیست بزرگ باشد؛ فقط شروعش کن."
-],
+/* روز ۱ */
 
-cup:[
-"☕",
-"حتی در یک روز خوب هم یک مکث کوتاه ارزشمند است. از این حال خوب لذت ببر و چند دقیقه فقط برای خودت وقت بگذار."
-],
-
-butterfly:[
-"🦋",
-"امروز فرصت خوبی است که کمی سبک‌تر زندگی کنی. سخت نگیر و اجازه بده اتفاق‌های خوب خودشان را نشان بدهند."
-],
-
-star:[
-"⭐",
-"امروز یکی از همان روزهایی است که باید قدر انرژی و انگیزه خودت را بدانی. از آن برای ساختن یک اتفاق خوب استفاده کن."
-],
-
-rainbow:[
-"🌈",
-"حال خوب امروزت را جدی بگیر. شاید همین حس خوب، شروع یک روز متفاوت و خاطره‌انگیز باشد."
-]
-
+{
+sun:"امروز لازم نیست همه‌چیز را حل کنی؛ فقط یک قدم کوچک و روشن بردار.",
+sprout:"هر شروع بزرگی با یک قدم کوچک آغاز می‌شود. امروز همین یک دقیقه کافی است.",
+cup:"یک نفس عمیق بکش و اجازه بده ذهنت کمی آرام‌تر شود.",
+butterfly:"امروز به خودت اجازه بده کمی سبک‌تر باشی.",
+star:"حتی اگر روزت معمولی باشد، باز هم می‌توانی یک لحظه‌ی خوب برای خودت بسازی.",
+rainbow:"بعد از شلوغی، همیشه جایی برای آرامش هست. امروز آن را پیدا کن."
 },
 
+/* روز ۲ */
 
-good: {
-
-sun:[
-"☀️",
-"حال خوب همیشه لازم نیست خیلی بزرگ باشد. همین حس خوب را حفظ کن و اجازه بده نورش به بقیه هم برسد."
-],
-
-sprout:[
-"🌱",
-"یک قدم کوچک کافی است. لازم نیست امروز همه‌چیز کامل باشد؛ فقط کمی رو به جلو حرکت کن."
-],
-
-cup:[
-"☕",
-"یک مکث کوتاه می‌تواند حال خوبت را بیشتر کند. چند نفس عمیق بکش و با آرامش ادامه بده."
-],
-
-butterfly:[
-"🦋",
-"امروز لازم نیست همه‌چیز را کنترل کنی. کمی سبک‌تر باش و به خودت اجازه بده از مسیر لذت ببری."
-],
-
-star:[
-"⭐",
-"شاید خودت متوجه نباشی، اما تلاش‌های کوچک تو دیده می‌شوند و ارزش دارند. به مسیرت ادامه بده."
-],
-
-rainbow:[
-"🌈",
-"اگر امروز خوب است، از آن لذت ببر. روزهای خوب قرار نیست همیشه کامل باشند؛ همین که خوب‌اند، کافی است."
-]
-
+{
+sun:"نور امروزت را از خودت شروع کن؛ حتی یک لبخند کوچک.",
+sprout:"چیزهای خوب آرام‌آرام رشد می‌کنند؛ به خودت فرصت بده.",
+cup:"یک دقیقه مکث کن و از همین لحظه‌ای که داری لذت ببر.",
+butterfly:"قرار نیست همیشه سریع باشی؛ گاهی آرام‌تر رفتن بهتر است.",
+star:"تو بیشتر از چیزی که فکر می‌کنی از پس روزت برمی‌آیی.",
+rainbow:"امروز یک اتفاق کوچک خوب را پیدا کن و به آن توجه کن."
 },
 
+/* روز ۳ */
 
-normal: {
-
-sun:[
-"☀️",
-"گاهی یک روز معمولی فقط به یک اتفاق کوچک خوب نیاز دارد. شاید امروز همان اتفاق کوچک را خودت بسازی."
-],
-
-sprout:[
-"🌱",
-"لازم نیست امروز اتفاق بزرگی بیفتد. یک قدم کوچک هم می‌تواند شروع تغییر باشد."
-],
-
-cup:[
-"☕",
-"شاید چیزی که امروز لازم داری، فقط چند دقیقه مکث باشد. نفسی بکش و بعد ادامه بده."
-],
-
-butterfly:[
-"🦋",
-"قرار نیست هر روز هیجان‌انگیز باشد. بعضی روزها آرام و ساده‌اند؛ و همین هم کاملاً خوب است."
-],
-
-star:[
-"⭐",
-"اگر امروز کسی به تو نگفت، خودت به خودت یادآوری کن: تلاش تو ارزشمند است."
-],
-
-rainbow:[
-"🌈",
-"یک روز معمولی هم می‌تواند پایان خوبی داشته باشد. هنوز برای ساختن یک لحظه خوب وقت داری."
-]
-
+{
+sun:"امروز به جای عجله، با آرامش قدم بعدی را انتخاب کن.",
+sprout:"هر بار که برای خودت وقت می‌گذاری، داری چیزی ارزشمند می‌سازی.",
+cup:"شانه‌هایت را رها کن و یک نفس آرام بکش.",
+butterfly:"سبک شدن همیشه به معنی حل شدن همه‌چیز نیست؛ گاهی فقط مکث کردن است.",
+star:"به خودت یادآوری کن که تلاش‌هایت دیده می‌شوند، حتی اگر فقط خودت ببینی.",
+rainbow:"امروز را با یک فکر خوب کوچک ادامه بده."
 },
 
+/* روز ۴ */
 
-tired: {
-
-sun:[
-"☀️",
-"اگر خسته‌ای، لازم نیست همیشه قوی باشی. کمی آرام‌تر حرکت کن و اجازه بده انرژی‌ات دوباره برگردد."
-],
-
-sprout:[
-"🌱",
-"امروز فقط یک قدم کوچک کافی است. به خودت فشار نیاور؛ آرام پیش رفتن هم پیش رفتن است."
-],
-
-cup:[
-"☕",
-"یک مکث کوتاه حق توست. چند دقیقه از شلوغی فاصله بگیر، نفسی بکش و کمی به خودت فرصت بده."
-],
-
-butterfly:[
-"🦋",
-"امروز خودت را مجبور به کامل بودن نکن. سبک‌تر حرکت کن و با خودت مهربان‌تر باش."
-],
-
-star:[
-"⭐",
-"حتی اگر امروز انرژی زیادی نداری، بدان که تلاش‌هایت ارزشمند است. لازم نیست همیشه در بهترین حالتت باشی."
-],
-
-rainbow:[
-"🌈",
-"قرار نیست هر روز عالی باشد. امروز فقط کمی با خودت مهربان‌تر باش؛ همین کافی است."
-]
-
+{
+sun:"امروز قرار نیست کامل باشی؛ فقط کافی است واقعی و مهربان با خودت باشی.",
+sprout:"یک تغییر کوچک هم تغییر است. همین مسیر را ادامه بده.",
+cup:"این یک دقیقه را بدون عجله و بدون فشار سپری کن.",
+butterfly:"ذهنت را برای چند لحظه از بایدها آزاد کن.",
+star:"تو حق داری خسته شوی و دوباره آرام‌آرام انرژی بگیری.",
+rainbow:"یک لحظه‌ی آرام می‌تواند وسط یک روز شلوغ اتفاق بیفتد."
 },
 
+/* روز ۵ */
 
-stressed: {
+{
+sun:"امروز به چیزهایی توجه کن که هنوز خوب پیش می‌روند.",
+sprout:"رشد همیشه قابل دیدن نیست؛ اما ادامه دادن خودش نشانه‌ی رشد است.",
+cup:"کمی فاصله بگیر، نفس بکش و بعد دوباره برگرد.",
+butterfly:"امروز کمی بیشتر با خودت مهربان باش.",
+star:"حتی قدم‌های کوچک هم تو را جلو می‌برند.",
+rainbow:"امروز برای یک اتفاق ساده و خوب جا باز کن."
+},
 
-sun:[
-"☀️",
-"اول یک نفس عمیق. لازم نیست همین الان همه‌چیز را حل کنی. فقط روی قدم بعدی تمرکز کن."
-],
+/* روز ۶ */
 
-sprout:[
-"🌱",
-"وقتی همه‌چیز زیاد به نظر می‌رسد، کوچک‌ترین قدم را انتخاب کن. یک کار، یک قدم، یک لحظه."
-],
+{
+sun:"آرامش را لازم نیست پیدا کنی؛ گاهی کافی است برایش یک دقیقه جا باز کنی.",
+sprout:"امروز فقط یک کار کوچک را با حوصله انجام بده.",
+cup:"چشم‌هایت را برای چند ثانیه ببند و نفس عمیق بکش.",
+butterfly:"اگر ذهنت شلوغ است، لازم نیست همین حالا همه‌چیز را مرتب کنی.",
+star:"تو داری عادت خوبی برای خودت می‌سازی.",
+rainbow:"یک نفس، یک مکث، یک شروع دوباره."
+},
 
-cup:[
-"☕",
-"چند دقیقه مکث کن. از صفحه و شلوغی فاصله بگیر، نفس عمیق بکش و بعد دوباره شروع کن."
-],
+/* روز ۷ */
 
-butterfly:[
-"🦋",
-"لازم نیست همه‌چیز تحت کنترل تو باشد. کمی از فشار را رها کن و با خودت مهربان‌تر باش."
-],
+{
+sun:"🎉 یک هفته گذشت! هفت روز برای خودت وقت گذاشتی؛ این خودش ارزشمند است.",
+sprout:"هفت روز کوچک، یک عادت خوب می‌سازد. ادامه بده.",
+cup:"امروز یک هفته کامل شد؛ یک دقیقه آرامش را جشن بگیر.",
+butterfly:"هفت روز است که مکث را تمرین می‌کنی. به خودت افتخار کن.",
+star:"یک هفته کامل شد! همین استمرار تو را قوی‌تر می‌کند.",
+rainbow:"🌈 هفت روز از این مسیر گذشت. قدم بعدی را با آرامش بردار."
+},
 
-star:[
-"⭐",
-"حتی وسط یک روز سخت، ارزش تلاش تو کم نمی‌شود. قدم بعدی را آرام بردار؛ همین کافی است."
-],
+/* روز ۸ */
 
-rainbow:[
-"🌈",
-"هیچ فشاری برای همیشه نمی‌ماند. این لحظه هم می‌گذرد. فعلاً فقط روی همین قدم کوچک تمرکز کن."
-]
+{
+sun:"حالا که یک هفته را پشت سر گذاشتی، آرام‌آرام ادامه بده.",
+sprout:"تو نشان دادی که می‌توانی برای خودت وقت بسازی.",
+cup:"امروز هم همان یک دقیقه را به خودت هدیه بده.",
+butterfly:"قرار نیست هر روز عالی باشد؛ فقط لازم است ادامه پیدا کند.",
+star:"تو در حال ساختن یک عادت کوچک اما ارزشمند هستی.",
+rainbow:"هر روز یک فرصت تازه برای کمی بهتر شدن است."
+},
 
+/* روز ۹ */
+
+{
+sun:"امروز به جای فشار آوردن به خودت، کمی به خودت اعتماد کن.",
+sprout:"چیزی که هر روز انجام می‌دهی، کم‌کم تبدیل به بخشی از تو می‌شود.",
+cup:"یک دقیقه آرام باش؛ جواب بعضی فکرها بعداً روشن می‌شود.",
+butterfly:"اجازه بده امروز کمی سبک‌تر بگذرد.",
+star:"لازم نیست همه‌چیز را همین امروز انجام بدهی.",
+rainbow:"گاهی بهترین کار، چند لحظه هیچ کاری نکردن است."
+},
+
+/* روز ۱۰ */
+
+{
+sun:"۱۰ روز گذشت؛ یعنی تو واقعاً برای خودت وقت گذاشتی.",
+sprout:"ده روز ادامه دادن، خودش یک موفقیت کوچک است.",
+cup:"امروز یک استراحت کوتاه را جدی بگیر.",
+butterfly:"به مسیرت نگاه کن، نه فقط به چیزهایی که هنوز باقی مانده‌اند.",
+star:"تو از چیزی که در روز اول بودی، یک قدم جلوتر هستی.",
+rainbow:"امروز هم یک رنگ خوب به روزت اضافه کن."
+},
+
+/* روز ۱۱ */
+
+{
+sun:"امروز دنبال یک دلیل کوچک برای لبخند باش.",
+sprout:"آرام و پیوسته جلو رفتن هم یک نوع قدرت است.",
+cup:"نفس بکش و اجازه بده این لحظه فقط برای خودت باشد.",
+butterfly:"فشار امروز را برای چند لحظه زمین بگذار.",
+star:"به خودت یادآوری کن که لازم نیست همیشه قوی به نظر برسی.",
+rainbow:"بعد از یک مکث کوتاه، ادامه دادن آسان‌تر می‌شود."
+},
+
+/* روز ۱۲ */
+
+{
+sun:"امروز انرژی‌ات را برای چیزهایی نگه دار که واقعاً مهم‌اند.",
+sprout:"هر روز یک فرصت کوچک برای مراقبت از خودت است.",
+cup:"یک جرعه آرامش برای خودت کنار بگذار.",
+butterfly:"کمی آهسته‌تر برو؛ شاید چیزهای بیشتری ببینی.",
+star:"تو داری به خودت ثابت می‌کنی که می‌توانی ادامه بدهی.",
+rainbow:"یک دقیقه برای خودت، یک قدم برای حال بهتر."
+},
+
+/* روز ۱۳ */
+
+{
+sun:"امروز لازم نیست همه‌چیز روشن باشد؛ فقط قدم بعدی کافی است.",
+sprout:"رشد در سکوت هم اتفاق می‌افتد.",
+cup:"ذهنت را برای یک دقیقه از شلوغی روز بیرون بیاور.",
+butterfly:"خودت را با دیگران مقایسه نکن؛ مسیر تو مخصوص خودت است.",
+star:"همین که هنوز ادامه می‌دهی، یعنی امید هست.",
+rainbow:"امروز به یک اتفاق کوچک خوب اجازه بده دیده شود."
+},
+
+/* روز ۱۴ */
+
+{
+sun:"🌿 دو هفته کامل شد! تو داری برای خودت یک عادت خوب می‌سازی.",
+sprout:"چهارده روز مراقبت از خود، چیزی نیست که بی‌ارزش باشد.",
+cup:"دو هفته گذشت؛ امروز یک دقیقه را با آرامش بیشتری تجربه کن.",
+butterfly:"تو دو هفته است که مکث را به زندگی‌ات اضافه کرده‌ای.",
+star:"نصف مسیر گذشت؛ به خودت افتخار کن.",
+rainbow:"🌈 دو هفته از این مسیر زیبا گذشت. ادامه بده."
+},
+
+/* روز ۱۵ */
+
+{
+sun:"نصف مسیر را رد کردی؛ حالا با آرامش ادامه بده.",
+sprout:"نیمه‌ی راه یعنی چیزی که شروع کردی، واقعاً ادامه پیدا کرده.",
+cup:"امروز به خودت یک استراحت کوچک بده.",
+butterfly:"سبک‌تر شدن را تمرین کن؛ حتی برای یک دقیقه.",
+star:"نیمه‌ی مسیر هم جای جشن گرفتن دارد.",
+rainbow:"نصف راه پشت سر گذاشته شد؛ رنگ‌های بعدی در راه‌اند."
+},
+
+/* روز ۱۶ */
+
+{
+sun:"امروز خودت را بابت تلاش‌هایت تحسین کن.",
+sprout:"هر روزی که ادامه می‌دهی، ریشه‌های این عادت عمیق‌تر می‌شود.",
+cup:"یک نفس آرام؛ بعد دوباره سراغ روزت برو.",
+butterfly:"اگر خسته‌ای، کمی مکث کن. مکث کردن شکست نیست.",
+star:"تو حق داری برای خودت وقت داشته باشی.",
+rainbow:"یک دقیقه آرامش می‌تواند شروع یک تغییر بزرگ‌تر باشد."
+},
+
+/* روز ۱۷ */
+
+{
+sun:"امروز فقط روی چیزی تمرکز کن که همین حالا در اختیار توست.",
+sprout:"قدم‌های کوچک، وقتی ادامه‌دار باشند، مسیر می‌سازند.",
+cup:"برای یک دقیقه همه‌ی بایدها را کنار بگذار.",
+butterfly:"ذهنت را کمی آزاد کن و اجازه بده نفس بکشد.",
+star:"تو داری یاد می‌گیری بیشتر به خودت توجه کنی.",
+rainbow:"امروز یک لحظه‌ی روشن برای خودت بساز."
+},
+
+/* روز ۱۸ */
+
+{
+sun:"امروز به خودت سخت نگیر؛ تو داری بهترین تلاشت را می‌کنی.",
+sprout:"حتی یک قدم کوچک رو به جلو، ارزشمند است.",
+cup:"آرام نفس بکش و سرعتت را کمی کمتر کن.",
+butterfly:"بعضی وقت‌ها لازم نیست کاری کنی؛ فقط حضور داشته باش.",
+star:"تو از چیزی که فکر می‌کنی قوی‌تری.",
+rainbow:"یک مکث کوتاه، فضای تازه‌ای در ذهنت ایجاد می‌کند."
+},
+
+/* روز ۱۹ */
+
+{
+sun:"امروز یک چیز خوب را انتخاب کن و همان را جدی بگیر.",
+sprout:"رشد با عجله اتفاق نمی‌افتد.",
+cup:"این یک دقیقه را فقط به خودت اختصاص بده.",
+butterfly:"سبک بودن را از یک نفس شروع کن.",
+star:"تلاش‌های کوچک تو جمع می‌شوند و نتیجه می‌سازند.",
+rainbow:"امروز هم می‌تواند یک شروع کوچک باشد."
+},
+
+/* روز ۲۰ */
+
+{
+sun:"۲۰ روز گذشت؛ تو خیلی بیشتر از یک روز اولی جلو آمده‌ای.",
+sprout:"بیست روز یعنی این عادت دیگر برایت غریبه نیست.",
+cup:"امروز هم برای آرامش خودت یک دقیقه کنار بگذار.",
+butterfly:"بیست روز است که به خودت توجه می‌کنی؛ ادامه بده.",
+star:"تو به پایان نزدیک‌تر شده‌ای.",
+rainbow:"۲۰ روز، ۲۰ مکث، و قدم‌های بیشتر در راه."
+},
+
+/* روز ۲۱ */
+
+{
+sun:"⭐ سه هفته کامل شد! تو یک عادت کوچک و ارزشمند ساخته‌ای.",
+sprout:"۲۱ روز ادامه دادن یعنی پشتکار واقعی.",
+cup:"امروز به خودت بابت این سه هفته تبریک بگو.",
+butterfly:"سه هفته است که برای آرامش خودت جا باز می‌کنی.",
+star:"فقط ۹ روز تا پایان دوره باقی مانده.",
+rainbow:"🌈 سه هفته کامل شد؛ مسیرت واقعاً زیبا شده."
+},
+
+/* روز ۲۲ */
+
+{
+sun:"بعد از سه هفته، هنوز یک دقیقه برای خودت ارزش دارد.",
+sprout:"ادامه دادن، مهم‌تر از سریع بودن است.",
+cup:"امروز هم یک نفس عمیق و یک مکث کوتاه.",
+butterfly:"اجازه بده روزت کمی نرم‌تر و آرام‌تر پیش برود.",
+star:"تو تا اینجا آمدی؛ قدم بعدی را هم می‌توانی برداری.",
+rainbow:"هر روز یک رنگ تازه به مسیرت اضافه می‌کند."
+},
+
+/* روز ۲۳ */
+
+{
+sun:"امروز انرژی‌ات را با مهربانی مدیریت کن.",
+sprout:"هر روز فرصتی برای رشد آرام است.",
+cup:"یک دقیقه از صفحه‌ها و شلوغی‌ها فاصله بگیر.",
+butterfly:"آرام‌تر بودن، به معنی عقب ماندن نیست.",
+star:"تو داری یاد می‌گیری خودت را فراموش نکنی.",
+rainbow:"یک لحظه خوب را امروز برای خودت نگه دار."
+},
+
+/* روز ۲۴ */
+
+{
+sun:"امروز هم لازم نیست همه‌چیز کامل باشد.",
+sprout:"چهار هفته نزدیک است؛ به مسیرت اعتماد کن.",
+cup:"یک دقیقه سکوت می‌تواند بیشتر از هزار فکر کمک کند.",
+butterfly:"امروز به خودت اجازه بده کمی سبک باشی.",
+star:"تو به پایان این دوره نزدیک شده‌ای.",
+rainbow:"نور و آرامش می‌توانند از یک دقیقه شروع شوند."
+},
+
+/* روز ۲۵ */
+
+{
+sun:"۲۵ روز گذشت؛ تو واقعاً به خودت متعهد مانده‌ای.",
+sprout:"پنج روز دیگر تا پایان این دوره.",
+cup:"امروز یک مکث کوچک برای خودت ذخیره کن.",
+butterfly:"این روزها را فقط با نتیجه نسنج؛ با احساسی که ساختی هم بسنج.",
+star:"تو داری به آخرین بخش مسیر می‌رسی.",
+rainbow:"پنج روز مانده و هنوز فرصت‌های زیادی برای آرامش هست."
+},
+
+/* روز ۲۶ */
+
+{
+sun:"امروز به خودت یادآوری کن که تا اینجا را خودت ساخته‌ای.",
+sprout:"چهار روز دیگر؛ آرام و پیوسته ادامه بده.",
+cup:"نفس بکش و از این لحظه عبور نکن؛ آن را زندگی کن.",
+butterfly:"گاهی بهترین هدیه، کمی زمان آزاد برای خودت است.",
+star:"هر روز باقی‌مانده را با یک مکث کوچک جشن بگیر.",
+rainbow:"پایان نزدیک است، اما مسیر هنوز زیباست."
+},
+
+/* روز ۲۷ */
+
+{
+sun:"سه روز دیگر مانده؛ اما امروز خودش ارزشمند است.",
+sprout:"تو نشان دادی که می‌توانی یک عادت خوب را حفظ کنی.",
+cup:"یک دقیقه آرامش، هدیه امروز تو به خودت.",
+butterfly:"سبک‌تر ادامه بده.",
+star:"به خودت افتخار کن که هنوز اینجایی.",
+rainbow:"امروز هم یک رنگ تازه به روزت اضافه کن."
+},
+
+/* روز ۲۸ */
+
+{
+sun:"چهار هفته کامل شد؛ این مسیر دیگر فقط یک برنامه نیست.",
+sprout:"دو روز دیگر مانده؛ آرام و با حوصله.",
+cup:"امروز به اندازه کافی برای خودت وقت بگذار.",
+butterfly:"این عادت کوچک حالا بخشی از مراقبت تو از خودت شده.",
+star:"پایان نزدیک است؛ اما چیزی که ساختی می‌تواند ادامه داشته باشد.",
+rainbow:"چهار هفته پر از مکث‌های کوچک و لحظه‌های خوب."
+},
+
+/* روز ۲۹ */
+
+{
+sun:"فردا روز پایانی است؛ امروز فقط از مسیر لذت ببر.",
+sprout:"یک قدم دیگر مانده.",
+cup:"امروز یک دقیقه را با قدردانی سپری کن.",
+butterfly:"به خودت نگاه کن؛ چقدر جلو آمده‌ای.",
+star:"فردا یک پایان زیباست، اما این عادت می‌تواند ادامه پیدا کند.",
+rainbow:"آخرین قدم‌ها هم می‌توانند رنگارنگ باشند."
+},
+
+/* روز ۳۰ */
+
+{
+sun:"🌈 روز سی‌ام رسید! تو یک مسیر ۳۰ روزه را کامل کردی. به خودت افتخار کن.",
+sprout:"۳۰ روز مراقبت از خودت؛ یک شروع کوچک که به یک مسیر تبدیل شد.",
+cup:"امروز یک نفس عمیق بکش و بابت این ۳۰ روز به خودت تبریک بگو.",
+butterfly:"۳۰ روز گذشت؛ سبک‌تر، آگاه‌تر و مهربان‌تر با خودت ادامه بده.",
+star:"⭐ تبریک! تو ۳۰ روز برای خودت وقت گذاشتی و این واقعاً ارزشمند است.",
+rainbow:"🌈 دوره ۳۰ روزه کامل شد. این پایان یک مسیر و می‌تواند شروع مسیر بعدی باشد."
 }
+
+];
+
+
+/* =====================================================
+   پیام‌های مربوط به حال کاربر
+===================================================== */
+
+const moodTexts = {
+
+happy:
+"چه خوب که امروز حالت خوبه! 😊 ",
+
+good:
+"خوبه که امروز حالت بد نیست. همین حس خوب رو قدر بدون. 🌿 ",
+
+normal:
+"اگر امروز معمولی می‌گذره، همین مکث کوتاه می‌تونه حالتو کمی بهتر کنه. 🌱 ",
+
+tired:
+"اگر خسته‌ای، حق داری کمی مکث کنی. امروز این یک دقیقه فقط برای توست. 🤍 ",
+
+stressed:
+"اگر تحت فشاری، فعلاً هیچ چیزی را حل نکن؛ فقط یک دقیقه نفس بکش و آرام‌تر شو. 🌿 "
 
 };
 
 
-let selectedMood = "";
+/* =====================================================
+   شروع برنامه
+===================================================== */
 
-const step1 = document.getElementById("step1");
-const step2 = document.getElementById("step2");
-const result = document.getElementById("result");
+function getStartDate(){
 
-const resultIcon = document.getElementById("resultIcon");
-const message = document.getElementById("message");
+let saved =
+localStorage.getItem(
+"oneMinuteRestStartDate"
+);
+
+if(!saved){
+
+const today =
+new Date();
+
+localStorage.setItem(
+"oneMinuteRestStartDate",
+today.toISOString()
+);
+
+saved =
+today.toISOString();
+
+}
+
+return new Date(saved);
+
+}
 
 
-/* انتخاب حال */
+/* =====================================================
+   تعداد روزهای گذشته
+===================================================== */
 
-document.querySelectorAll("[data-mood]").forEach(button => {
+function getDaysPassed(){
 
-button.addEventListener("click", () => {
+const startDate =
+getStartDate();
 
-selectedMood = button.dataset.mood;
+const today =
+new Date();
+
+startDate.setHours(0,0,0,0);
+
+today.setHours(0,0,0,0);
+
+const difference =
+today.getTime() -
+startDate.getTime();
+
+return Math.floor(
+difference /
+(1000 * 60 * 60 * 24)
+);
+
+}
+
+
+/* =====================================================
+   حالت تست مخفی
+===================================================== */
+
+/*
+
+0  = حالت عادی
+
+1  = روز ۱
+
+7  = روز ۷
+
+14 = روز ۱۴
+
+21 = روز ۲۱
+
+30 = روز ۳۰
+
+برای انتشار نهایی حتماً روی 0 باشد.
+
+*/
+
+const TEST_DAY = 0;
+
+
+/* =====================================================
+   پایان دوره
+===================================================== */
+
+function isProgramFinished(){
+
+if(
+TEST_DAY >= 1 &&
+TEST_DAY <= 30
+){
+
+return false;
+
+}
+
+return getDaysPassed() >= 30;
+
+}
+
+
+/* =====================================================
+   تعیین روز
+===================================================== */
+
+function getCurrentProgramDay(){
+
+if(
+TEST_DAY >= 1 &&
+TEST_DAY <= 30
+){
+
+return TEST_DAY;
+
+}
+
+return getDaysPassed() + 1;
+
+}
+
+
+const programFinished =
+isProgramFinished();
+
+const programDay =
+getCurrentProgramDay();
+
+
+/* =====================================================
+   عناصر صفحه
+===================================================== */
+
+const step1 =
+document.getElementById("step1");
+
+const step2 =
+document.getElementById("step2");
+
+const result =
+document.getElementById("result");
+
+const finished =
+document.getElementById("finished");
+
+
+const dayText =
+document.getElementById("dayText");
+
+const dayText2 =
+document.getElementById("dayText2");
+
+
+const progressPercent =
+document.getElementById("progressPercent");
+
+const progressPercent2 =
+document.getElementById("progressPercent2");
+
+
+const progressFill =
+document.getElementById("progressFill");
+
+const progressFill2 =
+document.getElementById("progressFill2");
+
+
+const specialDay =
+document.getElementById("specialDay");
+
+
+const startNewCycle =
+document.getElementById("startNewCycle");
+
+
+/* =====================================================
+   نوار پیشرفت
+===================================================== */
+
+const percent =
+Math.round(
+(programDay / 30) * 100
+);
+
+
+dayText.textContent =
+"روز " +
+programDay +
+" از ۳۰";
+
+
+dayText2.textContent =
+"روز " +
+programDay +
+" از ۳۰";
+
+
+progressPercent.textContent =
+percent + "٪";
+
+
+progressPercent2.textContent =
+percent + "٪";
+
+
+progressFill.style.width =
+percent + "%";
+
+
+progressFill2.style.width =
+percent + "%";
+
+
+/* =====================================================
+   پیام‌های ویژه
+===================================================== */
+
+const specialMessages = {
+
+7:
+"🎉 یک هفته کامل شد! هفت روز برای خودت وقت گذاشتی. همین ادامه دادن ارزشمنده.",
+
+14:
+"🌿 دو هفته گذشت! تو داری یک عادت کوچک و خوب برای خودت می‌سازی.",
+
+21:
+"⭐ سه هفته کامل شد! فقط ۹ روز تا پایان این دوره باقی مانده.",
+
+30:
+"🌈 روز سی‌ام رسید! تبریک می‌گم؛ تو یک مسیر ۳۰ روزه را کامل کردی."
+
+};
+
+
+if(
+specialMessages[programDay]
+){
+
+specialDay.textContent =
+specialMessages[programDay];
+
+specialDay.style.display =
+"block";
+
+}
+
+
+/* =====================================================
+   اگر دوره تمام شده
+===================================================== */
+
+if(programFinished){
 
 step1.classList.remove("active");
 
-step2.classList.add("active");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-});
-
-});
-
-
-/* انتخاب کارت */
-
-document.querySelectorAll("[data-card]").forEach(button => {
-
-button.addEventListener("click", () => {
-
-const resultData =
-messages[selectedMood][button.dataset.card];
-
-resultIcon.textContent = resultData[0];
-
-message.textContent = resultData[1];
-
 step2.classList.remove("active");
 
-result.classList.add("active");
+result.classList.remove("active");
+
+finished.classList.add("active");
+
+}
+
+
+/* =====================================================
+   انتخاب حال
+===================================================== */
+
+let selectedMood = null;
+
+
+document
+.querySelectorAll(".mood")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+function(){
+
+selectedMood =
+this.dataset.mood;
+
+step1.classList.remove(
+"active"
+);
+
+step2.classList.add(
+"active"
+);
 
 window.scrollTo({
 top:0,
@@ -554,8 +1443,139 @@ behavior:"smooth"
 });
 
 });
+
+
+/* =====================================================
+   انتخاب کارت
+===================================================== */
+
+const cardIcons = {
+
+sun:"☀️",
+
+sprout:"🌱",
+
+cup:"☕",
+
+butterfly:"🦋",
+
+star:"⭐",
+
+rainbow:"🌈"
+
+};
+
+
+document
+.querySelectorAll(".card")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+function(){
+
+const selectedCard =
+this.dataset.card;
+
+
+/* پیام روز */
+
+const dayData =
+dailyMessages[
+programDay - 1
+];
+
+
+/* متن کارت */
+
+const cardMessage =
+dayData[selectedCard];
+
+
+/* پیام نهایی */
+
+const finalMessage =
+moodTexts[selectedMood] +
+cardMessage;
+
+
+/* نمایش */
+
+document
+.getElementById("message")
+.textContent =
+finalMessage;
+
+
+/* آیکون */
+
+document
+.getElementById("resultIcon")
+.textContent =
+cardIcons[selectedCard];
+
+
+/* روز */
+
+document
+.getElementById("resultDay")
+.textContent =
+
+"برنامه روز " +
+programDay +
+" از ۳۰ • " +
+percent +
+"٪ از مسیر طی شده";
+
+
+/* تغییر صفحه */
+
+step2.classList.remove(
+"active"
+);
+
+result.classList.add(
+"active"
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+});
+
+
+/* =====================================================
+   شروع دوره دوم
+===================================================== */
+
+startNewCycle.addEventListener(
+"click",
+function(){
+
+const today =
+new Date();
+
+
+localStorage.setItem(
+"oneMinuteRestStartDate",
+today.toISOString()
+);
+
+
+/* صفحه دوباره بارگذاری می‌شود */
+
+location.reload();
+
+});
+
 
 </script>
 
+
 </body>
+
 </html>
