@@ -1,1 +1,155 @@
 
+<!DOCTYPE html>
+<html lang="fa"  dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b9478">
+<title>استراحت یک دقیقه‌ای</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(145deg,#f5fbf7,#e8f4ed);color:#294238;min-height:100vh}
+.container{max-width:540px;margin:auto;padding:20px 14px 35px}
+.box{background:rgba(255,255,255,.96);border-radius:30px;padding:25px 18px;box-shadow:0 14px 40px rgba(38,76,59,.13)}
+.header{text-align:center}.logo{font-size:52px}h1{font-size:27px;margin:8px 0}
+.intro{font-size:14px;line-height:2;color:#687871;margin:0}
+.question{font-size:18px;font-weight:bold;text-align:center;margin:27px 0 16px}
+.options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.option{border:none;border-radius:20px;min-height:82px;background:linear-gradient(145deg,#fff,#edf7f1);box-shadow:0 7px 20px rgba(38,76,59,.10);cursor:pointer;color:#294238;font-family:inherit;font-size:15px;transition:.2s}
+.option:hover{transform:translateY(-3px)}.option:active{transform:scale(.97)}
+.emoji{font-size:31px;display:block;margin-bottom:6px}
+.step{display:none}.step.active{display:block}
+.progress{text-align:center;color:#84918b;font-size:11px;margin-top:18px}
+.result{display:none;text-align:center}.result.active{display:block}
+.result-icon{font-size:65px}.result h2{font-size:22px;margin:10px 0 16px}
+.message{font-size:18px;line-height:2.3;color:#3c5047;margin:0}
+.divider{height:1px;background:#e7eee9;margin:22px 0}
+.note{font-size:11px;color:#7d8984;line-height:1.9}
+.footer{text-align:center;color:#87948e;font-size:11px;line-height:1.9;margin-top:16px}
+@media(max-width:360px){.options{gap:8px}.option{min-height:75px}.emoji{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="container"><div class="box">
+
+<section id="step1" class="step active">
+<div class="header">
+<div class="logo">🌱</div>
+<h1>استراحت یک دقیقه‌ای</h1>
+<p class="intro">قبل از اینکه کارت را ادامه بدهی، فقط یک دقیقه برای خودت وقت بگذار.</p>
+</div>
+<div class="question">حال امروزت چطوره؟</div>
+<div class="options">
+<button class="option" data-mood="happy"><span class="emoji">😄</span>عالی</button>
+<button class="option" data-mood="good"><span class="emoji">🙂</span>خوب</button>
+<button class="option" data-mood="normal"><span class="emoji">😐</span>معمولی</button>
+<button class="option" data-mood="tired"><span class="emoji">😔</span>خسته</button>
+<button class="option" data-mood="stressed"><span class="emoji">😣</span>تحت فشار</button>
+</div>
+<div class="progress">مرحله ۱ از ۲</div>
+</section>
+
+<section id="step2" class="step">
+<div class="header">
+<div class="logo">✨</div>
+<h1>حالا یک کارت انتخاب کن</h1>
+<p class="intro">زیاد فکر نکن... با اولین حسی که داری، یکی از کارت‌ها را انتخاب کن 👇</p>
+</div>
+<div class="options">
+<button class="option" data-card="sun"><span class="emoji">☀️</span>خورشید</button>
+<button class="option" data-card="sprout"><span class="emoji">🌱</span>جوانه</button>
+<button class="option" data-card="cup"><span class="emoji">☕</span>فنجان</button>
+<button class="option" data-card="butterfly"><span class="emoji">🦋</span>پروانه</button>
+<button class="option" data-card="star"><span class="emoji">⭐</span>ستاره</button>
+<button class="option" data-card="rainbow"><span class="emoji">🌈</span>رنگین‌کمان</button>
+</div>
+<div class="progress">مرحله ۲ از ۲</div>
+</section>
+
+<section id="result" class="result">
+<div class="result-icon" id="resultIcon"></div>
+<h2>پیام امروز برای تو 💚</h2>
+<p class="message" id="message"></p>
+<div class="divider"></div>
+<p class="note">این استراحت کوتاه فقط برای ساختن یک حس خوب در روز کاری است. 🌿</p>
+</section>
+
+</div>
+<div class="footer">
+یک مکث کوچک، گاهی می‌تواند حال یک روز را بهتر کند. 💚
+</div>
+</div>
+
+<script>
+const messages={
+happy:{
+sun:["☀️","چه خوب که امروز انرژی خوبی داری. اجازه بده این انرژی به اطرافیانت هم برسد؛ حال خوب تو می‌تواند حال یک نفر دیگر را هم بهتر کند."],
+sprout:["🌱","وقتی حال دلت خوب است، بهترین زمان برای شروع یک کار کوچک و دوست‌داشتنی است. لازم نیست بزرگ باشد؛ فقط شروعش کن."],
+cup:["☕","حتی در یک روز خوب هم یک مکث کوتاه ارزشمند است. از این حال خوب لذت ببر و چند دقیقه فقط برای خودت وقت بگذار."],
+butterfly:["🦋","امروز فرصت خوبی است که کمی سبک‌تر زندگی کنی. سخت نگیر و اجازه بده اتفاق‌های خوب خودشان را نشان بدهند."],
+star:["⭐","امروز یکی از همان روزهایی است که باید قدر انرژی و انگیزه خودت را بدانی. از آن برای ساختن یک اتفاق خوب استفاده کن."],
+rainbow:["🌈","حال خوب امروزت را جدی بگیر. شاید همین حس خوب، شروع یک روز متفاوت و خاطره‌انگیز باشد."]
+},
+good:{
+sun:["☀️","حال خوب همیشه لازم نیست خیلی بزرگ باشد. همین حس خوب را حفظ کن و اجازه بده نورش به بقیه هم برسد."],
+sprout:["🌱","یک قدم کوچک کافی است. لازم نیست امروز همه‌چیز کامل باشد؛ فقط کمی رو به جلو حرکت کن."],
+cup:["☕","یک مکث کوتاه می‌تواند حال خوبت را بیشتر کند. چند نفس عمیق بکش و با آرامش ادامه بده."],
+butterfly:["🦋","امروز لازم نیست همه‌چیز را کنترل کنی. کمی سبک‌تر باش و به خودت اجازه بده از مسیر لذت ببری."],
+star:["⭐","شاید خودت متوجه نباشی، اما تلاش‌های کوچک تو دیده می‌شوند و ارزش دارند. به مسیرت ادامه بده."],
+rainbow:["🌈","اگر امروز خوب است، از آن لذت ببر. روزهای خوب قرار نیست همیشه کامل باشند؛ همین که خوب‌اند، کافی است."]
+},
+normal:{
+sun:["☀️","گاهی یک روز معمولی فقط به یک اتفاق کوچک خوب نیاز دارد. شاید امروز همان اتفاق کوچک را خودت بسازی."],
+sprout:["🌱","لازم نیست امروز اتفاق بزرگی بیفتد. یک قدم کوچک هم می‌تواند شروع تغییر باشد."],
+cup:["☕","شاید چیزی که امروز لازم داری، فقط چند دقیقه مکث باشد. نفسی بکش و بعد ادامه بده."],
+butterfly:["🦋","قرار نیست هر روز هیجان‌انگیز باشد. بعضی روزها آرام و ساده‌اند؛ و همین هم کاملاً خوب است."],
+star:["⭐","اگر امروز کسی به تو نگفت، خودت به خودت یادآوری کن: تلاش تو ارزشمند است."],
+rainbow:["🌈","یک روز معمولی هم می‌تواند پایان خوبی داشته باشد. هنوز برای ساختن یک لحظه خوب وقت داری."]
+},
+tired:{
+sun:["☀️","اگر خسته‌ای، لازم نیست همیشه قوی باشی. کمی آرام‌تر حرکت کن و اجازه بده انرژی‌ات دوباره برگردد."],
+sprout:["🌱","امروز فقط یک قدم کوچک کافی است. به خودت فشار نیاور؛ آرام پیش رفتن هم پیش رفتن است."],
+cup:["☕","یک مکث کوتاه حق توست. چند دقیقه از شلوغی فاصله بگیر، نفسی بکش و کمی به خودت فرصت بده."],
+butterfly:["🦋","امروز خودت را مجبور به کامل بودن نکن. سبک‌تر حرکت کن و با خودت مهربان‌تر باش."],
+star:["⭐","حتی اگر امروز انرژی زیادی نداری، بدان که تلاش‌هایت ارزشمند است. لازم نیست همیشه در بهترین حالتت باشی."],
+rainbow:["🌈","قرار نیست هر روز عالی باشد. امروز فقط کمی با خودت مهربان‌تر باش؛ همین کافی است."]
+},
+stressed:{
+sun:["☀️","اول یک نفس عمیق. لازم نیست همین الان همه‌چیز را حل کنی. فقط روی قدم بعدی تمرکز کن."],
+sprout:["🌱","وقتی همه‌چیز زیاد به نظر می‌رسد، کوچک‌ترین قدم را انتخاب کن. یک کار، یک قدم، یک لحظه."],
+cup:["☕","چند دقیقه مکث کن. از صفحه و شلوغی فاصله بگیر، نفس عمیق بکش و بعد دوباره شروع کن."],
+butterfly:["🦋","لازم نیست همه‌چیز تحت کنترل تو باشد. کمی از فشار را رها کن و با خودت مهربان‌تر باش."],
+star:["⭐","حتی وسط یک روز سخت، ارزش تلاش تو کم نمی‌شود. قدم بعدی را آرام بردار؛ همین کافی است."],
+rainbow:["🌈","هیچ فشاری برای همیشه نمی‌ماند. این لحظه هم می‌گذرد. فعلاً فقط روی همین قدم کوچک تمرکز کن."]
+}
+};
+
+let selectedMood="";
+const step1=document.getElementById("step1");
+const step2=document.getElementById("step2");
+const result=document.getElementById("result");
+const resultIcon=document.getElementById("resultIcon");
+const message=document.getElementById("message");
+
+document.querySelectorAll("[data-mood]").forEach(button=>{
+button.addEventListener("click",()=>{
+selectedMood=button.dataset.mood;
+step1.classList.remove("active");
+step2.classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+});
+});
+
+document.querySelectorAll("[data-card]").forEach(button=>{
+button.addEventListener("click",()=>{
+const resultData=messages[selectedMood][button.dataset.card];
+resultIcon.textContent=resultData[0];
+message.textContent=resultData[1];
+step2.classList.remove("active");
+result.classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+});
+});
+</script>
+</body>
+</html>
