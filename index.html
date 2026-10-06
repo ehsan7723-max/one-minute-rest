@@ -32,9 +32,13 @@ padding:25px 18px;
 box-shadow:0 14px 40px rgba(38,76,59,.13)
 }
 
-.header{text-align:center}
+.header{
+text-align:center
+}
 
-.logo{font-size:52px}
+.logo{
+font-size:52px
+}
 
 h1{
 font-size:27px;
@@ -140,30 +144,6 @@ color:#7d8984;
 line-height:1.9
 }
 
-/* دکمه پایان */
-
-.end-button{
-border:none;
-border-radius:16px;
-padding:12px 32px;
-margin-top:8px;
-background:#e8f1ec;
-color:#486458;
-font-family:inherit;
-font-size:14px;
-cursor:pointer;
-transition:.2s;
-box-shadow:0 5px 15px rgba(38,76,59,.08)
-}
-
-.end-button:hover{
-transform:translateY(-2px)
-}
-
-.end-button:active{
-transform:scale(.97)
-}
-
 .footer{
 text-align:center;
 color:#87948e;
@@ -173,9 +153,19 @@ margin-top:16px
 }
 
 @media(max-width:360px){
-.options{gap:8px}
-.option{min-height:75px}
-.emoji{font-size:27px}
+
+.options{
+gap:8px
+}
+
+.option{
+min-height:75px
+}
+
+.emoji{
+font-size:27px
+}
+
 }
 </style>
 
@@ -188,6 +178,7 @@ margin-top:16px
 <div class="box">
 
 <!-- مرحله اول -->
+
 <section id="step1" class="step active">
 
 <div class="header">
@@ -243,6 +234,7 @@ margin-top:16px
 
 
 <!-- مرحله دوم -->
+
 <section id="step2" class="step">
 
 <div class="header">
@@ -299,6 +291,7 @@ margin-top:16px
 
 
 <!-- نتیجه -->
+
 <section id="result" class="result">
 
 <div class="result-icon" id="resultIcon"></div>
@@ -314,10 +307,6 @@ margin-top:16px
 <p class="note">
 این استراحت کوتاه فقط برای ساختن یک حس خوب در روز کاری است. 🌿
 </p>
-
-<button type="button" class="end-button" id="endButton">
-پایان
-</button>
 
 </section>
 
@@ -569,19 +558,7 @@ behavior:"smooth"
 
 });
 
-
-/* دکمه پایان برای وب */
-
-document.getElementById("endButton").addEventListener("click", () => {
-
-window.location.replace("about:blank");
-
-});
-
 </script>
 
 </body>
 </html>
-
-
-
